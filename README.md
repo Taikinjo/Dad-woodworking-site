@@ -7,7 +7,8 @@ The site includes:
 - A clean **home page** introducing his work  
 - A **project gallery** with multiple photos and descriptions for each piece  
 - An **about page** sharing his background and workshop story  
-- A **contact page** for inquiries and commissions  
+- A **contact page** for inquiries and commissions
+- Personal info and picture have been redacted
 
 I created this project using basic **HTML, CSS, and JavaScript** — no frameworks or CMS.  
 It was a great learning experience in designing, structuring, and deploying a static website from scratch.
