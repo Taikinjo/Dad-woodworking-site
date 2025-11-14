@@ -16,18 +16,22 @@
       <div class="container nav-inner">
         <a class="brand" href="index.html">
           <div class="logo">🪵</div>
-          <div>A/C Franklin Woodworking<small>About</small></div>
+          <div>
+            A/C Franklin Woodworking
+            <small data-i18n="nav_about_label">About</small>
+          </div>
         </a>
         <div class="nav-links">
-          <a href="projects.html">Projects</a>
-          <a href="about.html">About</a>
-          <a href="contact.html" class="btn">Contact</a>
+          <a href="projects.html" data-i18n="nav_projects">Projects</a>
+          <a href="about.html" data-i18n="nav_about">About</a>
+          <a href="contact.html" class="btn" data-i18n="nav_contact">Contact</a>
+          <button id="lang-toggle" class="btn small">EN/JP</button>
         </div>
       </div>
     </nav>
 
     <main class="container">
-      <h1 class="h1">About the Makers</h1>
+      <h1 class="h1" data-i18n="about_heading">About the Makers</h1>
       <div class="grid grid-2">
         <div class="card">
           <img
@@ -37,13 +41,13 @@
           />
         </div>
         <div class="card prose">
-          <p>
+          <p data-i18n="about_p1">
             Andrew and Cindy are the husband-and-wife team behind A/C
             Woodworking. With over 30 years of experience in construction and
             woodworking, Andrew brings a lifetime of hands-on craftsmanship and
             a love for building things that last.
           </p>
-          <p>
+          <p data-i18n="about_p2">
             Andrew and Cindy combine skill, creativity, and care in every
             project they take on — from rustic furniture to custom home pieces.
             The “A/C” in their name isn’t just their initials; it’s a symbol of
@@ -54,10 +58,18 @@
     </main>
 
     <footer class="container">
-      © <span id="year"></span> A/C Franklin Woodworking
+      © <span id="year"></span>
+      <span data-i18n="about_footer_text"> A/C Franklin Woodworking</span>
     </footer>
+
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script src="lang.js"></script>
+    <script>
+      document.getElementById("lang-toggle").addEventListener("click", () => {
+        setLanguage(currentLang === "en" ? "jp" : "en");
+      });
     </script>
   </body>
 </html>

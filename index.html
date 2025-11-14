@@ -21,13 +21,14 @@
           <div class="logo">🪵</div>
           <div>
             A/C Franklin Woodworking
-            <small>Handmade • Kentucky</small>
+            <small data-i18n="brand_tagline">Handmade • Kentucky</small>
           </div>
         </a>
         <div class="nav-links">
-          <a href="projects.html">Projects</a>
-          <a href="about.html">About</a>
-          <a href="contact.html" class="btn">Contact</a>
+          <a href="projects.html" data-i18n="nav_projects">Projects</a>
+          <a href="about.html" data-i18n="nav_about">About</a>
+          <a href="contact.html" class="btn" data-i18n="nav_contact">Contact</a>
+          <button id="lang-toggle" class="btn small">EN/JP</button>
         </div>
       </div>
     </nav>
@@ -35,12 +36,14 @@
     <main class="container">
       <section class="hero">
         <div>
-          <div class="kicker">Handcrafted, one piece at a time</div>
-          <h1 class="h1">
+          <div class="kicker" data-i18n="home_kicker">
+            Handcrafted, one piece at a time
+          </div>
+          <h1 class="h1" data-i18n="home_hero_title">
             Furniture and small goods built with patience, sharp tools, and a
             love of good timber.
           </h1>
-          <p class="prose">
+          <p class="prose" data-i18n="home_hero_body">
             Hand made furniture and wood projects built in Kentucky. Each piece
             is designed to highlight the natural beauty of the wood while
             providing lasting function.
@@ -48,8 +51,12 @@
           <div
             style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap"
           >
-            <a class="btn" href="projects.html">Browse Projects</a>
-            <a href="about.html">Meet the makers →</a>
+            <a class="btn" href="projects.html" data-i18n="home_browse_projects"
+              >Browse Projects</a
+            >
+            <a href="about.html" data-i18n="home_meet_makers"
+              >Meet the makers →</a
+            >
           </div>
         </div>
         <div class="card">
@@ -59,7 +66,10 @@
               alt="Bench Preview"
               style="width: 100%; height: auto; border-radius: 14px"
             />
-            <figcaption style="margin-top: 8px; color: #6b5b4a">
+            <figcaption
+              style="margin-top: 8px; color: #6b5b4a"
+              data-i18n="home_featured_caption"
+            >
               Featured: Outdoor Bench
             </figcaption>
           </figure>
@@ -68,24 +78,24 @@
 
       <section class="grid grid-3">
         <div class="card">
-          <div class="badge">Durable Joinery</div>
-          <h3 class="h2">Built to last</h3>
-          <p class="prose">
+          <div class="badge" data-i18n="card1_badge">Durable Joinery</div>
+          <h3 class="h2" data-i18n="card1_title">Built to last</h3>
+          <p class="prose" data-i18n="card1_body">
             Buit for outdoor and indoor use with traditional joinery.
           </p>
         </div>
         <div class="card">
-          <div class="badge">Local & Reclaimed</div>
-          <h3 class="h2">Thoughtful materials</h3>
-          <p class="prose">
+          <div class="badge" data-i18n="card2_badge">Local &amp; Reclaimed</div>
+          <h3 class="h2" data-i18n="card2_title">Thoughtful materials</h3>
+          <p class="prose" data-i18n="card2_body">
             Whenever possible, boards are reclaimed or locally sourced to
             highlight character and reduce waste.
           </p>
         </div>
         <div class="card">
-          <div class="badge">Custom Orders</div>
-          <h3 class="h2">Made for your home</h3>
-          <p class="prose">
+          <div class="badge" data-i18n="card3_badge">Custom Orders</div>
+          <h3 class="h2" data-i18n="card3_title">Made for your home</h3>
+          <p class="prose" data-i18n="card3_body">
             Sizes, finishes, and hardware can be tuned to your space. Sketches
             welcome.
           </p>
@@ -94,10 +104,20 @@
     </main>
 
     <footer class="container">
-      © <span id="year"></span> A/C Franklin Woodworking • Built by family
+      © <span id="year"></span>
+      <span data-i18n="footer_text">
+        A/C Franklin Woodworking • Built by family</span
+      >
     </footer>
+
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script src="lang.js"></script>
+    <script>
+      document.getElementById("lang-toggle").addEventListener("click", () => {
+        setLanguage(currentLang === "en" ? "jp" : "en");
+      });
     </script>
   </body>
 </html>

@@ -16,19 +16,25 @@
       <div class="container nav-inner">
         <a class="brand" href="index.html">
           <div class="logo">🪵</div>
-          <div>A/C Franklin Woodworking<small>Project</small></div>
+          <div>
+            A/C Franklin Woodworking
+            <small data-i18n="nav_project_label">Project</small>
+          </div>
         </a>
         <div class="nav-links">
-          <a href="projects.html">Projects</a>
-          <a href="about.html">About</a>
-          <a href="contact.html" class="btn">Contact</a>
+          <a href="projects.html" data-i18n="nav_projects">Projects</a>
+          <a href="about.html" data-i18n="nav_about">About</a>
+          <a href="contact.html" class="btn" data-i18n="nav_contact">Contact</a>
+          <button id="lang-toggle" class="btn small">EN/JP</button>
         </div>
       </div>
     </nav>
 
     <main class="container">
       <div class="breadcrumbs">
-        <a href="projects.html">Projects</a> / <span id="crumb">Loading…</span>
+        <a href="projects.html" data-i18n="nav_projects">Projects</a>
+        /
+        <span id="crumb" data-i18n="crumb_loading">Loading…</span>
       </div>
       <div id="view"></div>
     </main>
@@ -45,55 +51,67 @@
         (window.PROJECTS || []).find((x) => x.id === id) ||
         window.PROJECTS?.[0];
 
-      document.getElementById("crumb").textContent = p ? p.title : "Unknown";
-      const el = document.getElementById("view");
+      const crumbEl = document.getElementById("crumb");
+      const viewEl = document.getElementById("view");
 
       if (!p) {
-        el.innerHTML = "<p>Project not found.</p>";
+        crumbEl.textContent = "Unknown";
+        viewEl.innerHTML = "<p>Project not found.</p>";
       } else {
+        crumbEl.textContent = p.title;
+
         const metaLine = [p.wood, p.size, p.price].filter(Boolean).join(" • ");
 
         const notesHtml =
           p.buildNotes && p.buildNotes.length
             ? `<details>
-           <summary style="cursor:pointer;font-weight:600">Build notes</summary>
-           <ul>${p.buildNotes.map((n) => `<li>${n}</li>`).join("")}</ul>
-         </details>`
+                 <summary style="cursor:pointer;font-weight:600" data-i18n="build_notes">
+                   Build notes
+                 </summary>
+                 <ul>${p.buildNotes.map((n) => `<li>${n}</li>`).join("")}</ul>
+               </details>`
             : "";
 
-        el.innerHTML = `
-      <section class="grid grid-2" style="margin-top:8px">
-        <div class="card">
-          <div class="grid grid-2">
-            ${(p.images || ["assets/sample-1.jpg"])
-              .map(
-                (src) => `
-                <img src="${src}" style="
-                  width:100%;
-                  height:auto;
-                  max-height:700px;
-                  object-fit:contain;
-                  border-radius:12px;
-                  display:block;
-                  margin:0 auto 12px;
-                ">
-              `
-              )
-              .join("")}
-          </div>
-        </div>
-        <article class="card prose">
-          <div class="badge">${p.year || ""}</div>
-          <h1 class="h1" style="margin-top:8px">${p.title || ""}</h1>
-          <p style="color:#6b5b4a">${metaLine}</p>
-          <p>${p.description || ""}</p>
-          <hr style="border:none;border-top:1px solid #eadfd3;margin:16px 0">
-          ${notesHtml}
-        </article>
-      </section>`;
+        viewEl.innerHTML = `
+          <section class="grid grid-2" style="margin-top:8px">
+            <div class="card">
+              <div class="grid grid-2">
+                ${(p.images || ["assets/sample-1.jpg"])
+                  .map(
+                    (src) => `
+                      <img src="${src}" style="
+                        width:100%;
+                        height:auto;
+                        max-height:700px;
+                        object-fit:contain;
+                        border-radius:12px;
+                        display:block;
+                        margin:0 auto 12px;
+                      ">
+                    `
+                  )
+                  .join("")}
+              </div>
+            </div>
+            <article class="card prose">
+              <div class="badge">${p.year || ""}</div>
+              <h1 class="h1" style="margin-top:8px">${p.title || ""}</h1>
+              <p style="color:#6b5b4a">${metaLine}</p>
+              <p>${p.description || ""}</p>
+              <hr style="border:none;border-top:1px solid #eadfd3;margin:16px 0">
+              ${notesHtml}
+            </article>
+          </section>`;
       }
 
       document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+    <script src="lang.js"></script>
+    <script>
+      document.getElementById("lang-toggle").addEventListener("click", () => {
+        setLanguage(currentLang === "en" ? "jp" : "en");
+      });
     </script>
   </body>
 </html>

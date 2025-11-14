@@ -22,16 +22,19 @@
           <div>A/C Franklin Woodworking<small>Portfolio</small></div>
         </a>
         <div class="nav-links">
-          <a href="projects.html">Projects</a>
-          <a href="about.html">About</a>
-          <a href="contact.html" class="btn">Contact</a>
+          <a href="projects.html" data-i18n="nav_projects">Projects</a>
+          <a href="about.html" data-i18n="nav_about">About</a>
+          <a href="contact.html" class="btn" data-i18n="nav_contact">Contact</a>
+          <button id="lang-toggle" class="btn small">EN/JP</button>
         </div>
       </div>
     </nav>
 
     <main class="container">
-      <div class="breadcrumbs">Home / Projects</div>
-      <h1 class="h1">Projects</h1>
+      <div class="breadcrumbs" data-i18n="breadcrumbs_projects">
+        Home / Projects
+      </div>
+      <h1 class="h1" data-i18n="projects_heading">Projects</h1>
       <div id="gallery" class="grid grid-3"></div>
     </main>
 
@@ -60,6 +63,13 @@
         container.appendChild(el);
       });
       document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+    <script src="lang.js"></script>
+    <script>
+      document.getElementById("lang-toggle").addEventListener("click", () => {
+        setLanguage(currentLang === "en" ? "jp" : "en");
+      });
     </script>
   </body>
 </html>

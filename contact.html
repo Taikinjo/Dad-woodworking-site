@@ -19,26 +19,30 @@
       <div class="container nav-inner">
         <a class="brand" href="index.html">
           <div class="logo">🪵</div>
-          <div>A/C Franklin Woodworking<small>Contact</small></div>
+          <div>
+            A/C Franklin Woodworking
+            <small data-i18n="nav_contact_label">Contact</small>
+          </div>
         </a>
         <div class="nav-links">
-          <a href="projects.html">Projects</a>
-          <a href="about.html">About</a>
-          <a href="contact.html" class="btn">Contact</a>
+          <a href="projects.html" data-i18n="nav_projects">Projects</a>
+          <a href="about.html" data-i18n="nav_about">About</a>
+          <a href="contact.html" class="btn" data-i18n="nav_contact">Contact</a>
+          <button id="lang-toggle" class="btn small">EN/JP</button>
         </div>
       </div>
     </nav>
 
     <main class="container">
-      <h1 class="h1">Get in Touch</h1>
+      <h1 class="h1" data-i18n="contact_heading">Get in Touch</h1>
       <div class="grid grid-2">
         <form class="card" onsubmit="submitForm(event)">
           <div class="form-row">
-            <label for="name">Name</label>
+            <label for="name" data-i18n="contact_name_label">Name</label>
             <input id="name" class="input" required placeholder="Your name" />
           </div>
           <div class="form-row">
-            <label for="email">Email</label>
+            <label for="email" data-i18n="contact_email_label">Email</label>
             <input
               id="email"
               type="email"
@@ -48,7 +52,9 @@
             />
           </div>
           <div class="form-row">
-            <label for="message">Message</label>
+            <label for="message" data-i18n="contact_message_label"
+              >Message</label
+            >
             <textarea
               id="message"
               rows="6"
@@ -57,17 +63,22 @@
               placeholder="Tell us about your project"
             ></textarea>
           </div>
-          <button class="btn" type="submit">Send</button>
+          <button class="btn" type="submit" data-i18n="contact_send_button">
+            Send
+          </button>
           <p id="status" style="color: #6b5b4a"></p>
-          <p style="font-size: 0.9rem; color: #6b5b4a">
-            No backend wired up yet. 
+          <p
+            style="font-size: 0.9rem; color: #6b5b4a"
+            data-i18n="contact_demo_note"
+          >
+            No backend wired up yet.
           </p>
           <p>
             <a href="mailto:woodworks@example.com">woodworks@example.com</a>
           </p>
         </form>
         <div class="card prose">
-          <p>
+          <p data-i18n="contact_description">
             Based in Kentucky. Delivery or pickup can be arranged depending on
             area.
           </p>
@@ -76,8 +87,10 @@
     </main>
 
     <footer class="container">
-      © <span id="year"></span> Andy's Woodworks
+      © <span id="year"></span>
+      <span data-i18n="contact_footer_text"> Andy's Woodworks</span>
     </footer>
+
     <script>
       function submitForm(e) {
         e.preventDefault();
@@ -85,6 +98,12 @@
           "Thanks! This demo form just pretends to send.";
       }
       document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script src="lang.js"></script>
+    <script>
+      document.getElementById("lang-toggle").addEventListener("click", () => {
+        setLanguage(currentLang === "en" ? "jp" : "en");
+      });
     </script>
   </body>
 </html>
